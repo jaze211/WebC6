@@ -3,15 +3,16 @@ FROM openjdk:8-jdk AS build
 
 WORKDIR /app
 
-# Install Ant + wget
+# Cài Ant + wget
 RUN apt-get update && apt-get install -y ant wget && rm -rf /var/lib/apt/lists/*
 
-# Copy toàn bộ source
+# Copy toàn bộ source code
 COPY . /app
 
-# Tải servlet-api để compile
+# Tạo thư mục libs và tải servlet-api + JSTL
 RUN mkdir -p /app/libs && \
-    wget -O /app/libs/servlet-api.jar https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar
+    wget -O /app/libs/servlet-api.jar https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar && \
+    wget -O /app/libs/jstl-1.2.jar https://repo1.maven.org/maven2/javax/servlet/jstl/1.2/jstl-1.2.jar
 
 # Build từng project
 WORKDIR /app/ch06email
@@ -26,10 +27,13 @@ RUN ant clean dist
 # ---- Stage 2: Run with Tomcat ----
 FROM tomcat:9-jdk11-openjdk
 
-# Copy WAR sang webapps với context path mong muốn
+# Copy WAR sang webapps
 COPY --from=build /app/ch06email/dist/*.war /usr/local/tomcat/webapps/part1.war
 COPY --from=build /app/ch06_ex1_email_sol/dist/*.war /usr/local/tomcat/webapps/part2.war
 COPY --from=build /app/ch06_ex2_survey_sol/dist/*.war /usr/local/tomcat/webapps/part3.war
+
+# Copy thư mục libs vào Tomcat lib để JSTL nhận diện
+COPY --from=build /app/libs/*.jar /usr/local/tomcat/lib/
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]

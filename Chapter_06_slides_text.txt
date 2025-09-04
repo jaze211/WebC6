@@ -29,8 +29,15 @@ D:\University_Folders\Nam_4\Web\bt\C6>
 |   |   |-- styles
 |   |   |   +-- main.css
 |   |   |-- WEB-INF
+|   |   |   |-- lib
+|   |   |   |   |-- javax.mail.jar
+|   |   |   |   |-- jstl-1.2.jar
+|   |   |   |   |-- mysql-connector-java-5.1.23-bin.jar
+|   |   |   |   |-- poi-3.10-FINAL-20140208.jar
+|   |   |   |   +-- tomcat-dbcp.jar
 |   |   |   +-- web.xml
 |   |   |-- index.jsp
+|   |   |-- survey.jsp
 |   |   +-- thanks.jsp
 |   |-- build.xml
 |   +-- Dockerfile
@@ -64,6 +71,12 @@ D:\University_Folders\Nam_4\Web\bt\C6>
 |   |   |-- styles
 |   |   |   +-- main.css
 |   |   |-- WEB-INF
+|   |   |   |-- lib
+|   |   |   |   |-- javax.mail.jar
+|   |   |   |   |-- jstl-1.2.jar
+|   |   |   |   |-- mysql-connector-java-5.1.23-bin.jar
+|   |   |   |   |-- poi-3.10-FINAL-20140208.jar
+|   |   |   |   +-- tomcat-dbcp.jar
 |   |   |   +-- web.xml
 |   |   |-- index.jsp
 |   |   +-- thanks.jsp
@@ -96,6 +109,12 @@ D:\University_Folders\Nam_4\Web\bt\C6>
 |   |   |-- styles
 |   |   |   +-- main.css
 |   |   |-- WEB-INF
+|   |   |   |-- lib
+|   |   |   |   |-- javax.mail.jar
+|   |   |   |   |-- jstl-1.2.jar
+|   |   |   |   |-- mysql-connector-java-5.1.23-bin.jar
+|   |   |   |   |-- poi-3.10-FINAL-20140208.jar
+|   |   |   |   +-- tomcat-dbcp.jar
 |   |   |   +-- web.xml
 |   |   |-- index.html
 |   |   +-- survey.jsp
@@ -103,6 +122,13 @@ D:\University_Folders\Nam_4\Web\bt\C6>
 |   +-- Dockerfile
 |-- libs
 |   |-- javax.mail.jar
+|   |-- jstl-1.2.jar
+|   |-- mysql-connector-java-5.1.23-bin.jar
+|   |-- poi-3.10-FINAL-20140208.jar
+|   +-- tomcat-dbcp.jar
+|-- Chapter_06_slides_text.txt
+|-- Dockerfile
++-- README.md
 |   |-- mysql-connector-java-5.1.23-bin.jar
 |   |-- poi-3.10-FINAL-20140208.jar
 |   +-- tomcat-dbcp.jar

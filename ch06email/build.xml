@@ -1,20 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project name="ch06email" default="dist" basedir=".">
-    <property name="src.dir" value="src"/>
-    <property name="web.dir" value="web"/>
+    <property name="src.dir" value="src/java"/>
     <property name="build.dir" value="build"/>
-    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="web.dir" value="web"/>
     <property name="dist.dir" value="dist"/>
-    <property name="war.name" value="ch06email.war"/>
-
-    <path id="compile.classpath">
-        <fileset dir="../../libs">
-            <include name="**/*.jar"/>
-        </fileset>
-        <fileset dir="web/WEB-INF/lib">
-            <include name="**/*.jar"/>
-        </fileset>
-    </path>
+    <property name="lib.dir" value="../libs"/>
 
     <target name="clean">
         <delete dir="${build.dir}"/>
@@ -22,16 +11,20 @@
     </target>
 
     <target name="compile">
-        <mkdir dir="${classes.dir}"/>
-        <javac srcdir="${src.dir}/java" destdir="${classes.dir}" includeantruntime="false" classpathref="compile.classpath"/>
+        <mkdir dir="${build.dir}/classes"/>
+        <javac srcdir="${src.dir}" destdir="${build.dir}/classes" includeantruntime="false">
+            <classpath>
+                <fileset dir="${lib.dir}" includes="**/*.jar"/>
+            </classpath>
+        </javac>
     </target>
 
     <target name="dist" depends="compile">
         <mkdir dir="${dist.dir}"/>
-        <war destfile="${dist.dir}/${war.name}" webxml="${web.dir}/WEB-INF/web.xml">
+        <war destfile="${dist.dir}/ch06email.war" webxml="${web.dir}/WEB-INF/web.xml">
             <fileset dir="${web.dir}"/>
-            <classes dir="${classes.dir}"/>
-            <fileset dir="${web.dir}/WEB-INF/lib" includes="*.jar"/>
+            <classes dir="${build.dir}/classes"/>
+            <lib dir="${lib.dir}"/>
         </war>
     </target>
 </project>

@@ -1,17 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project name="ch06_ex2_survey_sol" default="dist" basedir=".">
     <property name="src.dir" value="src"/>
-    <property name="web.dir" value="web"/>
     <property name="build.dir" value="build"/>
-    <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="dist.dir" value="dist"/>
-    <property name="war.name" value="ch06_ex2_survey_sol.war"/>
+    <property name="lib.dir" value="/app/libs"/>
 
     <path id="compile.classpath">
-        <fileset dir="../../libs">
-            <include name="**/*.jar"/>
-        </fileset>
-        <fileset dir="web/WEB-INF/lib">
+        <fileset dir="${lib.dir}">
             <include name="**/*.jar"/>
         </fileset>
     </path>
@@ -22,16 +16,16 @@
     </target>
 
     <target name="compile">
-        <mkdir dir="${classes.dir}"/>
-        <javac srcdir="${src.dir}/java" destdir="${classes.dir}" includeantruntime="false" classpathref="compile.classpath"/>
+        <mkdir dir="${build.dir}/classes"/>
+        <javac srcdir="${src.dir}/java" destdir="${build.dir}/classes" includeantruntime="false" classpathref="compile.classpath"/>
     </target>
 
     <target name="dist" depends="compile">
         <mkdir dir="${dist.dir}"/>
-        <war destfile="${dist.dir}/${war.name}" webxml="${web.dir}/WEB-INF/web.xml">
-            <fileset dir="${web.dir}"/>
-            <classes dir="${classes.dir}"/>
-            <fileset dir="${web.dir}/WEB-INF/lib" includes="*.jar"/>
+        <war destfile="${dist.dir}/ch06_ex2_survey_sol.war" webxml="web/WEB-INF/web.xml">
+            <fileset dir="web"/>
+            <lib dir="${lib.dir}"/>
+            <classes dir="${build.dir}/classes"/>
         </war>
     </target>
 </project>
