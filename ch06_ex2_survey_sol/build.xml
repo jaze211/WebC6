@@ -8,10 +8,10 @@
     <property name="war.name" value="ch06_ex2_survey_sol.war"/>
 
     <path id="compile.classpath">
-        <fileset dir="../libs">
+        <fileset dir="../../libs">
             <include name="**/*.jar"/>
         </fileset>
-        <fileset dir="lib">
+        <fileset dir="web/WEB-INF/lib">
             <include name="**/*.jar"/>
         </fileset>
     </path>
@@ -21,21 +21,17 @@
         <delete dir="${dist.dir}"/>
     </target>
 
-    <target name="init">
+    <target name="compile">
         <mkdir dir="${classes.dir}"/>
-        <mkdir dir="${dist.dir}"/>
-        <mkdir dir="lib"/>
-    </target>
-
-    <target name="compile" depends="init">
         <javac srcdir="${src.dir}/java" destdir="${classes.dir}" includeantruntime="false" classpathref="compile.classpath"/>
     </target>
 
     <target name="dist" depends="compile">
-        <lib dir="${web.dir}/WEB-INF/lib"/>
+        <mkdir dir="${dist.dir}"/>
         <war destfile="${dist.dir}/${war.name}" webxml="${web.dir}/WEB-INF/web.xml">
             <fileset dir="${web.dir}"/>
             <classes dir="${classes.dir}"/>
+            <fileset dir="${web.dir}/WEB-INF/lib" includes="*.jar"/>
         </war>
     </target>
 </project>

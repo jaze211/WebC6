@@ -10,23 +10,23 @@ RUN apt-get update && apt-get install -y ant wget && rm -rf /var/lib/apt/lists/*
 COPY . /app
 
 # Tải servlet-api để compile
-RUN wget -O /app/servlet-api.jar https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar
+RUN mkdir -p /app/libs && \
+    wget -O /app/libs/servlet-api.jar https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar
 
 # Build từng project
 WORKDIR /app/ch06email
-RUN mkdir -p lib && cp /app/servlet-api.jar lib/ && ant clean dist
+RUN ant clean dist
 
 WORKDIR /app/ch06_ex1_email_sol
-RUN mkdir -p lib && cp /app/servlet-api.jar lib/ && ant clean dist
+RUN ant clean dist
 
 WORKDIR /app/ch06_ex2_survey_sol
-RUN mkdir -p lib && cp /app/servlet-api.jar lib/ && ant clean dist
-
+RUN ant clean dist
 
 # ---- Stage 2: Run with Tomcat ----
 FROM tomcat:9-jdk11-openjdk
 
-# Copy từng WAR sang webapps với context path mong muốn
+# Copy WAR sang webapps với context path mong muốn
 COPY --from=build /app/ch06email/dist/*.war /usr/local/tomcat/webapps/part1.war
 COPY --from=build /app/ch06_ex1_email_sol/dist/*.war /usr/local/tomcat/webapps/part2.war
 COPY --from=build /app/ch06_ex2_survey_sol/dist/*.war /usr/local/tomcat/webapps/part3.war
