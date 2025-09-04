@@ -1,0 +1,109 @@
+D:\University_Folders\Nam_4\Web\bt\C6>
+|-- ch06email
+|   |-- nbproject
+|   |   |-- private
+|   |   |   |-- private.properties
+|   |   |   +-- private.xml
+|   |   |-- ant-deploy.xml
+|   |   |-- build-impl.xml
+|   |   |-- genfiles.properties
+|   |   |-- project.properties
+|   |   +-- project.xml
+|   |-- src
+|   |   |-- conf
+|   |   |   +-- MANIFEST.MF
+|   |   +-- java
+|   |       +-- murach
+|   |           |-- business
+|   |           |   +-- User.java
+|   |           |-- data
+|   |           |   +-- UserDB.java
+|   |           +-- email
+|   |               +-- EmailListServlet.java
+|   |-- web
+|   |   |-- includes
+|   |   |   |-- footer.jsp
+|   |   |   +-- header.html
+|   |   |-- META-INF
+|   |   |   +-- context.xml
+|   |   |-- styles
+|   |   |   +-- main.css
+|   |   |-- WEB-INF
+|   |   |   +-- web.xml
+|   |   |-- index.jsp
+|   |   +-- thanks.jsp
+|   |-- build.xml
+|   +-- Dockerfile
+|-- ch06_ex1_email_sol
+|   |-- nbproject
+|   |   |-- private
+|   |   |   |-- private.properties
+|   |   |   +-- private.xml
+|   |   |-- ant-deploy.xml
+|   |   |-- build-impl.xml
+|   |   |-- genfiles.properties
+|   |   |-- project.properties
+|   |   +-- project.xml
+|   |-- src
+|   |   |-- conf
+|   |   |   +-- MANIFEST.MF
+|   |   +-- java
+|   |       +-- murach
+|   |           |-- business
+|   |           |   +-- User.java
+|   |           |-- data
+|   |           |   +-- UserDB.java
+|   |           +-- email
+|   |               +-- EmailListServlet.java
+|   |-- web
+|   |   |-- includes
+|   |   |   |-- footer.jsp
+|   |   |   +-- header.html
+|   |   |-- META-INF
+|   |   |   +-- context.xml
+|   |   |-- styles
+|   |   |   +-- main.css
+|   |   |-- WEB-INF
+|   |   |   +-- web.xml
+|   |   |-- index.jsp
+|   |   +-- thanks.jsp
+|   |-- build.xml
+|   +-- Dockerfile
+|-- ch06_ex2_survey_sol
+|   |-- nbproject
+|   |   |-- private
+|   |   |   |-- private.properties
+|   |   |   +-- private.xml
+|   |   |-- ant-deploy.xml
+|   |   |-- build-impl.xml
+|   |   |-- genfiles.properties
+|   |   |-- project.properties
+|   |   +-- project.xml
+|   |-- src
+|   |   |-- conf
+|   |   |   +-- MANIFEST.MF
+|   |   +-- java
+|   |       +-- murach
+|   |           |-- business
+|   |           |   +-- User.java
+|   |           +-- controllers
+|   |               +-- SurveyServlet.java
+|   |-- web
+|   |   |-- images
+|   |   |   +-- murachlogo.jpg
+|   |   |-- META-INF
+|   |   |   +-- context.xml
+|   |   |-- styles
+|   |   |   +-- main.css
+|   |   |-- WEB-INF
+|   |   |   +-- web.xml
+|   |   |-- index.html
+|   |   +-- survey.jsp
+|   |-- build.xml
+|   +-- Dockerfile
+|-- libs
+|   |-- javax.mail.jar
+|   |-- mysql-connector-java-5.1.23-bin.jar
+|   |-- poi-3.10-FINAL-20140208.jar
+|   +-- tomcat-dbcp.jar
++-- Chapter_06_slides_text.txt
