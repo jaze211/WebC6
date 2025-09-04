@@ -10,18 +10,17 @@ RUN apt-get update && apt-get install -y ant wget && rm -rf /var/lib/apt/lists/*
 COPY . /app
 
 # Tải servlet-api để compile
-RUN mkdir -p lib && \
-    wget -O lib/servlet-api.jar https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar
+RUN wget -O /app/servlet-api.jar https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar
 
 # Build từng project
 WORKDIR /app/ch06email
-RUN ant clean dist
+RUN mkdir -p lib && cp /app/servlet-api.jar lib/ && ant clean dist
 
 WORKDIR /app/ch06_ex1_email_sol
-RUN ant clean dist
+RUN mkdir -p lib && cp /app/servlet-api.jar lib/ && ant clean dist
 
 WORKDIR /app/ch06_ex2_survey_sol
-RUN ant clean dist
+RUN mkdir -p lib && cp /app/servlet-api.jar lib/ && ant clean dist
 
 
 # ---- Stage 2: Run with Tomcat ----
