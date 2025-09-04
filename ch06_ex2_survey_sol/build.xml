@@ -32,6 +32,7 @@
     </target>
 
     <target name="dist" depends="compile">
+        <lib dir="${web.dir}/WEB-INF/lib"/>
         <war destfile="${dist.dir}/${war.name}" webxml="${web.dir}/WEB-INF/web.xml">
             <fileset dir="${web.dir}"/>
             <classes dir="${classes.dir}"/>
